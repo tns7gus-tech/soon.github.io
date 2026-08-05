@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ko" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>권순현의 자기소개 모험</title>
+    <meta
+      name="description"
+      content="레트로 RPG 스타일로 방을 이동하며 권순현을 소개하는 인터랙티브 자기소개 페이지"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell" aria-labelledby="page-title">
+      <section class="topbar" aria-label="소개 정보">
+        <div>
+          <p class="eyebrow" data-i18n="eyebrow">연애프로그램 자기소개 퀘스트</p>
+          <h1 id="page-title" data-i18n="title">권순현의 작은 모험</h1>
+        </div>
+
+        <div class="toolbar" aria-label="설정">
+          <div class="segmented" aria-label="언어 선택">
+            <button type="button" class="chip is-active" data-lang="ko">KO</button>
+            <button type="button" class="chip" data-lang="en">EN</button>
+            <button type="button" class="chip" data-lang="ja">JA</button>
+          </div>
+          <button type="button" class="icon-button" id="themeToggle" aria-label="테마 전환">
+            <span aria-hidden="true">◐</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="game-layout">
+        <section class="stage-panel" aria-label="캐릭터 이동 맵">
+          <div class="map-header">
+            <div>
+              <p class="status-label" data-i18n="statusLabel">현재 위치</p>
+              <p class="status-value" id="roomStatus">중앙 광장</p>
+            </div>
+            <p class="hint" data-i18n="hint">방향키/WASD 또는 터치 버튼으로 이동</p>
+          </div>
+
+          <div class="map" id="map" role="application" aria-label="권순현 소개 맵" tabindex="0">
+            <div class="tile room room-a" data-room="name">
+              <span class="room-code">A</span>
+              <span class="room-title" data-i18n="roomName">이름</span>
+            </div>
+            <div class="tile path"></div>
+            <div class="tile room room-b" data-room="age">
+              <span class="room-code">B</span>
+              <span class="room-title" data-i18n="roomAge">나이</span>
+            </div>
+            <div class="tile wall"></div>
+            <div class="tile path"></div>
+            <div class="tile wall"></div>
+            <div class="tile room room-c" data-room="job">
+              <span class="room-code">C</span>
+              <span class="room-title" data-i18n="roomJob">직업</span>
+            </div>
+            <div class="tile path plaza" data-room="plaza">
+              <span class="plaza-mark">START</span>
+            </div>
+            <div class="tile room room-d" data-room="charm">
+              <span class="room-code">D</span>
+              <span class="room-title" data-i18n="roomCharm">매력</span>
+            </div>
+            <div class="tile wall"></div>
+            <div class="tile path"></div>
+            <div class="tile wall"></div>
+            <div class="tile room room-e" data-room="date">
+              <span class="room-code">E</span>
+              <span class="room-title" data-i18n="roomDate">데이트</span>
+            </div>
+            <div class="tile path"></div>
+            <div class="tile room room-f" data-room="final">
+              <span class="room-code">F</span>
+              <span class="room-title" data-i18n="roomFinal">한마디</span>
+            </div>
+            <div class="player" id="player" aria-hidden="true">
+              <span class="player-hair"></span>
+              <span class="player-face"></span>
+              <span class="player-body"></span>
+              <span class="player-foot foot-left"></span>
+              <span class="player-foot foot-right"></span>
+            </div>
+          </div>
+        </section>
+
+        <aside class="profile-panel" aria-live="polite">
+          <p class="panel-kicker" id="cardKicker">중앙 광장</p>
+          <h2 id="cardTitle">방을 선택해 주세요</h2>
+          <p id="cardBody">
+            캐릭터를 움직여 A방과 B방에 들어가면 소개 카드가 바뀝니다.
+          </p>
+          <div class="profile-tags" id="profileTags">
+            <span>Developer</span>
+            <span>1995</span>
+            <span>Quest</span>
+          </div>
+        </aside>
+      </section>
+
+      <section class="controls" aria-label="터치 이동 버튼">
+        <button type="button" class="control control-up" data-move="up" aria-label="위로 이동">▲</button>
+        <button type="button" class="control control-left" data-move="left" aria-label="왼쪽으로 이동">◀</button>
+        <button type="button" class="control control-down" data-move="down" aria-label="아래로 이동">▼</button>
+        <button type="button" class="control control-right" data-move="right" aria-label="오른쪽으로 이동">▶</button>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
