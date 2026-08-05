@@ -44,4 +44,5 @@
 - 대상 저장소: `tns7gus-tech/soon`
 - 실제 GitHub canonical 저장소: `tns7gus-tech/soon.github.io`
 - 배포 방식: GitHub Actions 기반 GitHub Pages
-- 예상 URL: `https://tns7gus-tech.github.io/soon/` 또는 사용자 사이트 저장소로 인식되면 `https://tns7gus-tech.github.io/`
+- 배포 URL: `https://tns7gus-tech.github.io/soon.github.io/`
+- 배포 검증: HTML, `styles.css`, `app.js` 모두 200 OK 확인
