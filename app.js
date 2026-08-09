@@ -28,7 +28,7 @@ if (!assets) {
 }
 
 const state = {
-  x: 716,
+  x: 675,
   y: 923,
   direction: "up",
   moving: new Set(),
