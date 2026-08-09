@@ -45,6 +45,13 @@ const spriteByDirection = {
   right: assets.playerRight,
 };
 
+const directionOffset = {
+  up: { dx: 0, dy: -1 },
+  down: { dx: 0, dy: 1 },
+  left: { dx: -1, dy: 0 },
+  right: { dx: 1, dy: 0 },
+};
+
 const stories = {
   computer: {
     number: "01",
@@ -293,6 +300,19 @@ function updateDirection(dx, dy) {
   }
 }
 
+function nudgePlayer(direction, distance = 18) {
+  const offset = directionOffset[direction];
+  if (!offset) return;
+
+  updateDirection(offset.dx, offset.dy);
+  const nextX = state.x + offset.dx * distance;
+  const nextY = state.y + offset.dy * distance;
+  if (isWalkable(nextX, state.y)) state.x = nextX;
+  if (isWalkable(state.x, nextY)) state.y = nextY;
+  updatePlayer();
+  updateInteraction();
+}
+
 function gameLoop(timestamp) {
   const delta = Math.min((timestamp - state.lastTimestamp) / 1000, 0.05) || 0;
   state.lastTimestamp = timestamp;
@@ -332,6 +352,7 @@ document.addEventListener("keydown", (event) => {
   const direction = keyDirections[event.key];
   if (!direction) return;
   event.preventDefault();
+  if (!state.moving.has(direction)) nudgePlayer(direction);
   state.moving.add(direction);
   updatePlayer();
 });
@@ -349,6 +370,7 @@ document.querySelectorAll("[data-direction]").forEach((button) => {
   const start = (event) => {
     event.preventDefault();
     gameFrame.focus({ preventScroll: true });
+    if (!state.moving.has(direction)) nudgePlayer(direction);
     state.moving.add(direction);
     button.classList.add("is-pressed");
     updatePlayer();
